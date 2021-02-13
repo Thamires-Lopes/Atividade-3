@@ -1,27 +1,16 @@
 import React from 'react';
-import {
-  Card, Button, Container, Row,
-} from 'react-bootstrap';
 import MyCard from './components/Card';
 import MyHeader from './components/Header';
-import code from './images/code.jpg';
+import img from './images/code.jpg';
 
 function App() {
+  const routes = ['Home', 'Services', 'About'];
+
   return (
     <div>
-      <MyHeader title="Pitang" routes={['First route', 'Second route', 'Third route']} />
+      <MyHeader title="Pitang" routes={routes} />
       <div className="m-3">
-        <MyCard title="Home">
-          <Button variant="dark">Add Info</Button>
-          <Card.Subtitle className="mb-2 text-muted - text-center">
-            There are no itens yet.
-          </Card.Subtitle>
-          <Container>
-            <Row className="justify-content-md-center">
-              <Card.Img className="justify-content-md-center" style={{ width: '50rem' }} variant="bottom" src={code} />
-            </Row>
-          </Container>
-        </MyCard>
+        <MyCard title="Home" subtitle="There is nothing to see here" image={img} />
       </div>
     </div>
   );

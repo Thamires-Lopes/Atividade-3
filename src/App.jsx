@@ -3,7 +3,7 @@ import {
   Card, Button, Container, Row,
 } from 'react-bootstrap';
 import MyCard from './components/Card';
-import MyHeader from './components/Card/Header';
+import MyHeader from './components/Header';
 import code from './images/code.jpg';
 
 function App() {

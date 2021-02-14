@@ -1,17 +1,27 @@
-import React from 'react';
-import { Button } from 'react-bootstrap';
+import React, { useState } from 'react';
+import MyModal from '../components/Modal';
 import Card from '../components/Card';
-import data from '../utils/data';
 
 function App() {
+  const [cards, setCards] = useState([]);
+
   return (
     <main>
       <div className="m-3">
         <div className="mb-4 d-flex justify-content-center align-items-center">
           <h1 className="center-text">Lista de Tarefas</h1>
-          <Button className="m-3" variant="dark">Adicionar Tarefa</Button>
+          <div className="ml-2">
+            <MyModal cards={cards} setCards={setCards} card={{}} btnText="Adicionar nova tarefa" />
+          </div>
         </div>
-        {data.map((card) => <Card card={card} />)}
+        {cards.map((card, index) => (
+          <Card
+            cards={cards}
+            setCards={setCards}
+            card={card}
+            index={index}
+          />
+        ))}
       </div>
     </main>
   );

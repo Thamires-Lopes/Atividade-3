@@ -4,15 +4,31 @@ import {
 } from 'react-bootstrap';
 
 import MyModal from '../Modal';
-
 import '../../styles/styles.css';
 
-const MyCard = ({ card: { title, description, completed } }) => {
+const MyCard = ({
+  card, cards, setCards,
+}) => {
+  const {
+    id, title, description, completed,
+  } = card;
   const [checkbox, setCheckbox] = useState(completed);
   const onCompletedTodo = () => setCheckbox(!checkbox);
 
+  const deleteCard = () => {
+    const teste = cards.filter((el) => {
+      if (el.id !== card.id) {
+        console.log(`El.id: ${el.id}, Index: ${id}`);
+      }
+
+      return el.id !== id;
+    });
+
+    setCards(teste);
+  };
+
   return (
-    <Card className="mb-4">
+    <Card className="mb-4" id={`${id}`}>
       <Card.Header>{title}</Card.Header>
       <Card.Body>
         <Form className="d-flex align-items-center justify-content-between">
@@ -26,8 +42,8 @@ const MyCard = ({ card: { title, description, completed } }) => {
           </Form.Check>
 
           <ButtonGroup className="float-right">
-            <MyModal />
-            <Button className="ml-1" variant="dark">Excluir</Button>
+            <MyModal card={card} btnText="Editar" />
+            <Button className="ml-1" variant="dark" onClick={() => deleteCard()}>Excluir</Button>
           </ButtonGroup>
         </Form>
       </Card.Body>

@@ -1,3 +1,11 @@
+# Participantes do Grupo
+- Mirna Gama
+- Renato Lira
+- Rômulo José
+- Larissa Andrade
+- Thamires Lopes
+- Racine Felipe
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

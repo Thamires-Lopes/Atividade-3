@@ -1,25 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  Card, Button, Container, Row,
+  Card, Button, ButtonGroup, Form,
 } from 'react-bootstrap';
 
-const MyCard = ({ title, subtitle, image }) => (
-  <Card className="mb-4">
-    <Card.Header>
-      <Card.Title>{title}</Card.Title>
-    </Card.Header>
-    <Card.Body>
-      <Button variant="dark">Add Info</Button>
-      <Card.Subtitle className="mb-2 text-muted - text-center">
-        {subtitle}
-      </Card.Subtitle>
-      <Container>
-        <Row className="justify-content-md-center">
-          <Card.Img className="justify-content-md-center" style={{ width: '50rem' }} variant="bottom" src={image} />
-        </Row>
-      </Container>
-    </Card.Body>
-  </Card>
-);
+import MyModal from '../Modal';
+
+import '../../styles/styles.css';
+
+const MyCard = ({ card: { title, description, completed } }) => {
+  const [checkbox, setCheckbox] = useState(completed);
+  const onCompletedTodo = () => setCheckbox(!checkbox);
+
+  return (
+    <Card className="mb-4">
+      <Card.Header>{title}</Card.Header>
+      <Card.Body>
+        <Form className="d-flex align-items-center justify-content-between">
+          <Form.Check type="checkbox">
+            <Form.Check.Input
+              type="checkbox"
+              checked={checkbox}
+              onChange={() => onCompletedTodo()}
+            />
+            <Form.Label className={checkbox ? 'completed' : ''}>{description}</Form.Label>
+          </Form.Check>
+
+          <ButtonGroup className="float-right">
+            <MyModal />
+            <Button className="ml-1" variant="dark">Excluir</Button>
+          </ButtonGroup>
+        </Form>
+      </Card.Body>
+    </Card>
+  );
+};
 
 export default MyCard;

@@ -16,13 +16,7 @@ const MyCard = ({
   const onCompletedTodo = () => setCheckbox(!checkbox);
 
   const deleteCard = () => {
-    const teste = cards.filter((el) => {
-      if (el.id !== card.id) {
-        console.log(`El.id: ${el.id}, Index: ${id}`);
-      }
-
-      return el.id !== id;
-    });
+    const teste = cards.filter((el) => el.id !== id);
 
     setCards(teste);
   };

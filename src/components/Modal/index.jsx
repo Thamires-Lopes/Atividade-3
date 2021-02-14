@@ -21,7 +21,9 @@ const MyModal = ({
 
   const handleSave = () => {
     const id = Math.random() * 100;
-    setCards([...cards, { id, title: editTitle, description: editDescription }]);
+    setCards([...cards, {
+      id, title: editTitle, description: editDescription, completed: false,
+    }]);
     handleClose();
   };
 
